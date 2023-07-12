@@ -1,0 +1,114 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fw-bold  ">
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div
+      class="collapse navbar-collapse justify-content-between"
+      id="navbarNav"
+    >
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/get-Branches"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >الفروع</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [routerLink]="['/get-Cities']"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >المدن</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/get-governate"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >المحافظات</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/getAllEmployee"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >الموظفين</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/getAllRepresentive"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >المناديب</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/get-traders"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >التجار</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/weight_setting"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >اعدادات الوزن</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/getShippingSetting"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >اعدادات الشحن</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/ReportShipping"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >تقرير الطلبات</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="/ShowOrder"
+            [routerLinkActive]="'text-danger'"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >عرض الطلبات</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
