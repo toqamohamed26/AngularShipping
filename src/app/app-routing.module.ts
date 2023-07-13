@@ -36,6 +36,7 @@ import { AuthGuard } from 'src/guards/auth.guard';
 import { EmployeeGuard } from 'src/guards/employee.guard';
 import { TraderGuard } from 'src/guards/trader.guard';
 import { ShoworderForTraderComponent } from './Components/showorder-for-trader/showorder-for-trader.component';
+import { AddOrderForTraderComponent } from './Components/add-order-for-trader/add-order-for-trader.component';
 
 const routes: Routes = [
   // Default route
@@ -47,12 +48,14 @@ const routes: Routes = [
     {path:'trader',children:[
       {path: 'home', component: HomeForTraderComponent },
       {path: 'ShowOrder', component: ShoworderForTraderComponent },
-      { path: 'addorder', component: AddOrderComponent },
-      { path: 'updateorder/:id', component: AddOrderComponent }
+      { path: 'addorder', component:AddOrderForTraderComponent },
+      { path: 'updateorder/:id', component: AddOrderForTraderComponent}
     ],canActivate:[TraderGuard]},
     {path:'employee',children:[
       { path: 'home', component: HomeComponent },
+
       { path: 'getAllRepresentive', component: GetAllRepresentiveComponent },
+
     { path: 'addRepresentive', component: AddRepresentiveComponent },
     { path: 'UpdateRepresentive/:id', component: UpdateRepresentativeComponent },
     // Route for adding a Branch
@@ -95,7 +98,7 @@ const routes: Routes = [
     { path: 'setting/update-Village/:id', component: VillageSettingComponent },
     { path: 'setting', redirectTo: "setting/weight_setting"},
 
-
+    { path: 'addorder', component: AddOrderComponent },
     //aya routing
     { path: 'get-traders', component: GetTradersComponent },
 

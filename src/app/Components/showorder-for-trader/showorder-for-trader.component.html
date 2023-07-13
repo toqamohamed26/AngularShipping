@@ -22,7 +22,7 @@
               <th>#</th>
               <th>تاريخ الاضافة</th>
               <th>بيانات العميل</th>
-  
+
               <th>المدينه</th>
               <th>المحافظه</th>
               <th>تكلفه الطلب</th>
@@ -36,7 +36,7 @@
               <th scope="row">{{ i + 1 }}</th>
               <td>{{ order.date_Adding | date: "yyyy-MM-dd HH:mm:ss" }}</td>
               <td>{{ order.name_customer }}|{{ order.phone_Customer }}</td>
-  
+
               <td>{{ order.city }}</td>
               <td>{{ order.governate }}</td>
               <td>{{ order.total_shipping }}</td>
@@ -52,7 +52,7 @@
                     [disabled]="order.isDeleted">
                 </div>
               </td> -->
-  
+
               <!-- <td>
                 <div class="form-check">
                   <input
@@ -69,7 +69,7 @@
                   ></label>
                 </div>
               </td> -->
-  
+
               <!-- <td>
                 <a
                   [routerLink]="['/update-order', order.id]"
@@ -84,7 +84,7 @@
                 ></a>
               </td> -->
               <td>
-                <a class="btn btn-info m-1" >
+                <a class="btn btn-info m-1" [routerLink]="['/trader/updateorder',order.id]" >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -99,9 +99,9 @@
                   </svg>
                 </a>
               </td>
-  
+
               <td>
-  
+
                 <a class=" btn btn-danger " (click)="deleteOrder(order.id)">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -120,10 +120,9 @@
             </tr>
           </tbody>
         </table>
-  
+
       </div>
       <div class="d-flex justify-content-center mt-5">
-        <a  [routerLink]="['/employee/addorder']" class="btn a mb-5">اضافة طلب  </a>
+        <a  [routerLink]="['/trader/addorder']" class="btn a mb-5">اضافة طلب  </a>
       </div>
     </div>
-  

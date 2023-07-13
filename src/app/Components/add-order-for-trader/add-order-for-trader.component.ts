@@ -1,25 +1,24 @@
-import { ActivatedRoute, Route, Router } from '@angular/router';
-import { BranchesServiceService } from './../../Service/branches-service.service';
-import { ShippingSettingService } from './../../Service/shipping-setting.service';
-import { TraderService } from './../../Service/trader.service';
-import { CitiesServiceService } from './../../Service/cities-service.service';
-import { GovernatesServiceService } from './../../Service/governates-service.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { GetAllOrderService } from './../../Service/get-all-order.service';
-
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/Service/auth.service';
+import { BranchesServiceService } from 'src/app/Service/branches-service.service';
+import { CitiesServiceService } from 'src/app/Service/cities-service.service';
+import { GetAllOrderService } from 'src/app/Service/get-all-order.service';
+import { GovernatesServiceService } from 'src/app/Service/governates-service.service';
+import { ShippingSettingService } from 'src/app/Service/shipping-setting.service';
+import { TraderService } from 'src/app/Service/trader.service';
 enum PaymentType {
   PayOnDelivery = 'payOnDelivery',
   Prepaid = 'prepaid',
   PackageForAPackage = 'packageForAPackage'
 }
-
 @Component({
-  selector: 'app-add-order',
-  templateUrl: './add-order.component.html',
-  styleUrls: ['./add-order.component.css']
+  selector: 'app-add-order-for-trader',
+  templateUrl: './add-order-for-trader.component.html',
+  styleUrls: ['./add-order-for-trader.component.css']
 })
-export class AddOrderComponent implements OnInit {
+export class AddOrderForTraderComponent implements OnInit {
   paymentTypes: PaymentType[] = Object.values(PaymentType);
   paymentType: number = 0;
   cityForm!: FormGroup;
@@ -42,7 +41,8 @@ export class AddOrderComponent implements OnInit {
     private shippingsettingservice: ShippingSettingService,
     private branchesServiceService: BranchesServiceService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authService:AuthService
   ) {}
 
   ngOnInit(): void {
@@ -100,7 +100,7 @@ export class AddOrderComponent implements OnInit {
   createForm(): void {
     this.cityForm = this.formBuilder.group({
       id: this.id_order,
-      traderId: ['', Validators.required],
+      traderId: this.authService.getId(),
       paymentType: [0, Validators.required],
       clientName: ['', Validators.required],
       firstPhoneNumber: ['', Validators.required],
@@ -187,7 +187,7 @@ export class AddOrderComponent implements OnInit {
       // Call the JSON service method to update the form data
       this.getAllOrderService.updateOrder(this.formData).subscribe(
         (response: any) => {
-          this.router.navigate(['/employee/ShowOrder']);
+          this.router.navigate(['/trader/ShowOrder']);
           // Handle success response
           console.log('Form updated successfully:', response);
         },
@@ -202,7 +202,7 @@ export class AddOrderComponent implements OnInit {
       this.formData.paymentType = Number(this.formData.paymentType);
       this.getAllOrderService.AddOrder(this.formData).subscribe(
         (response: any) => {
-          this.router.navigate(['/ShowOrder']);
+          this.router.navigate(['/trader/ShowOrder']);
 
           // Handle success response
           console.log('Form added successfully:', response);
