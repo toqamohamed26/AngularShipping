@@ -13,6 +13,9 @@ export class GetAllOrderService {
   GetShipping() {
     return this.http.get<any[]>('https://localhost:7012/Show_Order');
   }
+  GetShippingForTrader(id:string) {
+    return this.http.get<any[]>(`https://localhost:7012/Show_OrderforTrader?id=${id}`);
+  }
   getOrdersByStatus(status: string) {
     return this.http.get<any[]>(
       `https://localhost:7012/FilterStatus?Name_status=${status}`

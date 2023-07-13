@@ -36,7 +36,7 @@ export class ShoworderForTraderComponent implements OnInit {
   }
 
   loadReport() {
-    this.getAllOrderService.GetShipping().subscribe((data: any) => {
+    this.getAllOrderService.GetShippingForTrader(this.id).subscribe((data: any) => {
       this.Order_Report = data.data;
       console.log(data);
     });

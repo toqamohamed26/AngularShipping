@@ -26,7 +26,6 @@
               <th>المدينه</th>
               <th>المحافظه</th>
               <th>تكلفه الطلب</th>
-              <th>تغير الحالة</th>
               <th>تعديل الطلب</th>
               <th>حذف</th>
             </tr>
@@ -39,50 +38,7 @@
 
               <td>{{ order.city }}</td>
               <td>{{ order.governate }}</td>
-              <td>{{ order.total_shipping }}</td>
-              <td>
-                <a [routerLink]="['/employee/StatusUpdate', order.id]" class="btn btn a"
-                  >الحاله</a
-                >
-              </td>
-              <!-- <td class="p-3">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"
-                   [checked]="!order.isDeleted" (change)=" softDeleteemployee(order.id);"
-                    [disabled]="order.isDeleted">
-                </div>
-              </td> -->
-
-              <!-- <td>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    name="isDeleted_{{ order.id }}"
-                    id="{{ 'isDeleted_' + order.id }}"
-                    [checked]="order.isDeleted"
-                    disabled
-                  />
-                  <label
-                    class="form-check-label"
-                    for="{{ 'isDeleted_' + order.id }}"
-                  ></label>
-                </div>
-              </td> -->
-
-              <!-- <td>
-                <a
-                  [routerLink]="['/update-order', order.id]"
-                  style="cursor: pointer;"
-                  class="bi bi-pencil-square fs-3 text-warning"
-                ></a
-                >&nbsp;&nbsp;| &nbsp;
-                <a
-                  (click)="deleteorder(order.id)"
-                  style="cursor: pointer;"
-                  class="bi bi-trash-fill fs-3 text-danger"
-                ></a>
-              </td> -->
+              <td>{{ order.total_shipping }}</td>          
               <td>
                 <a class="btn btn-info m-1" [routerLink]="['/trader/updateorder',order.id]" >
                   <svg

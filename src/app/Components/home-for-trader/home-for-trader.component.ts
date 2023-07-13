@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Service/auth.service';
 import { GetAllOrderService } from 'src/app/Service/get-all-order.service';
 
 @Component({
@@ -8,6 +9,7 @@ import { GetAllOrderService } from 'src/app/Service/get-all-order.service';
 })
 export class HomeForTraderComponent implements OnInit{
   orders : number[] =[]
+  id : any =this.authservice.getId();
   status : string [] =[
     'جديد',
     'قيد الانتظار',
@@ -22,13 +24,13 @@ export class HomeForTraderComponent implements OnInit{
     'رفض ولم يتم الدفع'
   ]
   constructor
-  (private orderServise:GetAllOrderService)
+  (private orderServise:GetAllOrderService,private authservice:AuthService)
    {}
     ngOnInit(): void
     {
-      // this.orderServise.TraderCount(id).subscribe(e=>{
-      //   this.orders = e ; 
-      // })
+      this.orderServise.TraderCount(this.id).subscribe(e=>{
+        this.orders = e ; 
+      })
     }
   
   
