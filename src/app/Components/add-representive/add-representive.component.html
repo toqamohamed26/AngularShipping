@@ -4,7 +4,7 @@
     <div class=" d-flex gray">
       <p class="px-2" ><i class="fa-solid fa-house-chimney"></i></p>
       <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
-      <p class="px-2 event" [routerLink]="['/getAllRepresentive']">المناديب</p>
+      <p class="px-2 event" [routerLink]="['/employee/getAllRepresentive']">المناديب</p>
       <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
       <p class="px-2 text-black">{{action}}</p>
     </div>
@@ -23,7 +23,7 @@
               <div *ngIf="getRepresentiveName.hasError('required')" class="form-text error">
                 اسم المندوب مطلوب
               </div>
-    
+
               <div *ngIf="getRepresentiveName.hasError('minlength')" class="form-text error">
                 ادخل اسم صحيح
               </div>
@@ -53,13 +53,13 @@
 
               <div *ngIf="getPassword.hasError('required')" class="form-text error">
                 يجب ادخال كلمه المرور </div>
-    
+
               <div *ngIf="getPassword.hasError('pattern')" class="form-text error ">
-    
+
                 كلمه المرور لابد ان تحتوي على 8 احرف على الاقل وحروف خاصه </div>
             </ng-container>
         </div>
-       
+
       </div>
       <div class="row">
         <div class="col-lg-4">
@@ -97,9 +97,9 @@
             <div *ngIf="getphone.hasError('required')" class="form-text error">
               رقم الهاتف مطلوب
             </div>
-  
+
             <div *ngIf="getphone.hasError('pattern')" class="form-text error er">
-  
+
               رقم الهاتف لابد ان يحتوي  على 11 رقم </div>
           </ng-container>
         </div>
@@ -115,7 +115,7 @@
               <div *ngIf="getAddress.hasError('required')" class="form-text error">
                 العنوان مطلوب
               </div>
-    
+
               <div *ngIf="getAddress.hasError('minlength')" class="form-text error">
                 ادخل عنوان صحيح
               </div>
@@ -146,7 +146,7 @@
         </div>
 
       </div>
-      <button type="submit" class=" btn a mt-4 px-3" 
+      <button type="submit" class=" btn a mt-4 px-3"
       [disabled]="AddRepresentive.invalid">حفظ </button>
       <button (click)="close()" class="btn-danger btn text-light  mt-4 px-3 me-3" >
         اغلاق

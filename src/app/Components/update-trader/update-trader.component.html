@@ -6,7 +6,7 @@
     <div class=" d-flex gray">
       <p class="px-2" ><i class="fa-solid fa-house-chimney"></i></p>
       <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
-      <p class="px-2 event" [routerLink]="['/getAllRepresentive']">التجار</p>
+      <p class="px-2 event" [routerLink]="['/employee/getAllRepresentive']">التجار</p>
       <p class="px-2 "><i class="fa-solid fa-chevron-left"></i></p>
       <p class="px-2 text-black">تعديل تاجر</p>
     </div>
@@ -47,7 +47,7 @@
             <div *ngIf="traderForm.controls['password'].errors">Password cannot be more than 20 characters long.</div>
           </div>
         </div>
-       
+
       </div>
       <div class="row">
         <div class="col-lg-4">
@@ -118,7 +118,7 @@
         <div class="d-flex align-items-center mt-3">
           <p class="text-primary mb-0 mr-3" style="font-weight: bold;">اضافه باقات اسعار مميزة </p>
           &nbsp;&nbsp;&nbsp;
-          <button routerLink="/add-sp" type="button" class="btn btn-primary">اضافة</button>
+          <button routerLink="/employee/add-sp" type="button" class="btn btn-primary">اضافة</button>
         </div>
       </div>
       <button type="submit" class=" btn a mt-4 px-3" >حفظ </button>

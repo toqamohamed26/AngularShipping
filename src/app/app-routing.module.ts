@@ -29,82 +29,93 @@ import { VillageSettingComponent } from './Components/village-setting/village-se
 import { StatusUpdateComponent } from './Components/status-update/status-update.component';
 import { AddOrderComponent } from './Components/add-order/add-order.component';
 import { HomeComponent } from './Components/home/home.component';
+import { HomeForTraderComponent } from './Components/home-for-trader/home-for-trader.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { LoginGuard } from 'src/guards/login.guard';
+import { AuthGuard } from 'src/guards/auth.guard';
+import { EmployeeGuard } from 'src/guards/employee.guard';
+import { TraderGuard } from 'src/guards/trader.guard';
 
 const routes: Routes = [
   // Default route
-  { path: '', component: LoginComponent },
-  //  {path: '', component: NavbarComponent },
+  { path: 'login', component: LoginComponent ,canActivate:[LoginGuard]},
 
   // Default route
-   { path: 'home', component: HomeComponent },
-   { path: 'homeForTrader', component: HomeComponent },
+  {path:'',component:DashboardComponent,
+  children:[
+    {path:'trader',children:[
+      {path: 'home', component: HomeForTraderComponent },
+      { path: 'addorder', component: AddOrderComponent },
+      { path: 'updateorder/:id', component: AddOrderComponent }
+    ],canActivate:[TraderGuard]},
+    {path:'employee',children:[
+      { path: 'home', component: HomeComponent },
+      { path: 'getAllRepresentive', component: GetAllRepresentiveComponent },
+    { path: 'addRepresentive', component: AddRepresentiveComponent },
+    { path: 'UpdateRepresentive/:id', component: UpdateRepresentativeComponent },
+    // Route for adding a Branch
+    { path: 'get-Branches', component: BranchesComponent },
+    { path: 'add-branch', component: AddBranchComponent },
+    { path: 'add-branch/:id', component: AddBranchComponent },
+    // Route for adding a Cities
+    { path: 'get-Cities', component: CitiesComponent },
+    { path: 'add-city', component: AddCityComponent },
+    { path: 'add-city/:id', component: AddCityComponent },
+
+    //path for employee
+    // { path: 'getAllemployee', component: EmployeeComponent },
+    { path: 'getAllEmployee', component: EmployeeComponent },
+    { path: 'addemployee', component: AddEmployeeComponent },
+    { path: 'UpdateEmployee/:id', component: UpdateEmployeeComponent },
+
+    // Route for getting governates
+    { path: 'get-governate', component: GovernatesComponent },
+
+    { path: 'add-governate', component: AddGovernateComponent },
+
+    { path: 'update-governate/:id', component: AddGovernateComponent },
+
+    // Route for weight_setting
+    { path: 'setting/weight_setting', component: WeightSettingComponent },
+
+    // route for shipping setting
+    { path: 'setting/getShippingSetting', component: ShippingSettingComponent },
+
+    { path: 'setting/add-ShippingSetting', component: AddShippingSettingComponent },
+
+    { path: 'setting/update-ShippingSetting/:id', component: AddShippingSettingComponent },
+
+    // route for shipping setting
+    { path: 'setting/getVillageSetting', component: VillageSettingComponent },
+
+    { path: 'setting/add-Village', component: VillageSettingComponent },
+
+    { path: 'setting/update-Village/:id', component: VillageSettingComponent },
+    { path: 'setting', redirectTo: "setting/weight_setting"},
 
 
-  { path: 'getAllRepresentive', component: GetAllRepresentiveComponent },
-  { path: 'addRepresentive', component: AddRepresentiveComponent },
-  { path: 'UpdateRepresentive/:id', component: UpdateRepresentativeComponent },
-  // Route for adding a Branch
-  { path: 'get-Branches', component: BranchesComponent },
-  { path: 'add-branch', component: AddBranchComponent },
-  { path: 'add-branch/:id', component: AddBranchComponent },
-  // Route for adding a Cities
-  { path: 'get-Cities', component: CitiesComponent },
-  { path: 'add-city', component: AddCityComponent },
-  { path: 'add-city/:id', component: AddCityComponent },
+    //aya routing
+    { path: 'get-traders', component: GetTradersComponent },
 
-  //path for employee
-  // { path: 'getAllemployee', component: EmployeeComponent },
-  { path: 'getAllEmployee', component: EmployeeComponent },
-  { path: 'addemployee', component: AddEmployeeComponent },
-  { path: 'UpdateEmployee/:id', component: UpdateEmployeeComponent },
+    { path: 'add-trader', component: AddTraderComponent },
 
-  // Route for getting governates
-  { path: 'get-governate', component: GovernatesComponent },
+    { path: 'update-trader/:id', component: UpdateTraderComponent },
 
-  { path: 'add-governate', component: AddGovernateComponent },
+    { path: 'get-sp', component: GetSpecialPriceComponent },
 
-  { path: 'update-governate/:id', component: AddGovernateComponent },
+    { path: 'add-sp', component: AddSpecialPriceComponent },
 
-  // Route for weight_setting
-  { path: 'setting/weight_setting', component: WeightSettingComponent },
+    //report
+    { path: 'ReportShipping', component: ReportShippingComponent },
+    { path: 'ShowOrder', component: ShowOrderComponent },
+    { path: 'StatusUpdate/:id', component: StatusUpdateComponent },
+    ],canActivate:[EmployeeGuard]},
+  ],canActivate:[AuthGuard]}
 
-  // route for shipping setting
-  { path: 'setting/getShippingSetting', component: ShippingSettingComponent },
-
-  { path: 'setting/add-ShippingSetting', component: AddShippingSettingComponent },
-
-  { path: 'setting/update-ShippingSetting/:id', component: AddShippingSettingComponent },
- 
-  // route for shipping setting
-  { path: 'setting/getVillageSetting', component: VillageSettingComponent },
-
-  { path: 'setting/add-Village', component: VillageSettingComponent },
-
-  { path: 'setting/update-Village/:id', component: VillageSettingComponent },
-  { path: 'setting', redirectTo: "setting/weight_setting"},
-
- 
-  //aya routing
-  { path: 'get-traders', component: GetTradersComponent },
-
-  { path: 'add-trader', component: AddTraderComponent },
-
-  { path: 'update-trader/:id', component: UpdateTraderComponent },
-
-  { path: 'get-sp', component: GetSpecialPriceComponent },
-
-  { path: 'add-sp', component: AddSpecialPriceComponent },
-
-  //report
-  { path: 'ReportShipping', component: ReportShippingComponent },
-  { path: 'ShowOrder', component: ShowOrderComponent },
-  { path: 'StatusUpdate/:id', component: StatusUpdateComponent },
-  { path: 'addorder', component: AddOrderComponent },
-  { path: 'updateorder/:id', component: AddOrderComponent }
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+}

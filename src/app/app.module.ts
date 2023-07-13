@@ -16,7 +16,7 @@ import { GovernatesComponent } from './Components/governates/governates.componen
 import { CitiesComponent } from './Components/cities/cities.component';
 import { BranchesComponent } from './Components/branches/branches.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddGovernateComponent } from './Components/add-governate/add-governate.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddCityComponent } from './Components/add-city/add-city.component';
@@ -53,6 +53,9 @@ import { StatusUpdateComponent } from './Components/status-update/status-update.
 import { AlertComponent } from './Components/alert/alert.component';
 import { HomeComponent } from './Components/home/home.component';
 import { HomeForTraderComponent } from './Components/home-for-trader/home-for-trader.component';
+import { TokenInterceptor } from 'src/interceptors/token.interceptor';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -93,7 +96,8 @@ import { HomeForTraderComponent } from './Components/home-for-trader/home-for-tr
     ShowOrderComponent,
     AlertComponent,
     HomeComponent,
-    HomeForTraderComponent
+    HomeForTraderComponent,
+    DashboardComponent
 
 
   ],
@@ -104,13 +108,13 @@ import { HomeForTraderComponent } from './Components/home-for-trader/home-for-tr
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    ToastrModule.forRoot(), 
+    ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgbCollapse,
     NgxPaginationModule,
-    
+
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi:true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

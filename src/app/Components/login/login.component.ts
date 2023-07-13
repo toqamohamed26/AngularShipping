@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService } from 'src/app/Service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,18 +11,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class LoginComponent implements OnInit{
   flag=true;
 
-  constructor(private formBuilder: FormBuilder, 
-     private route: ActivatedRoute,
-    
-    private router: Router, ) { }
-
+  constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
+              private authService:AuthService,
+              private router: Router, ) { }
   ngOnInit() {
-   
   }
   Loginform = new FormGroup({
   password: new FormControl('', [
     Validators.required,
-    Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?!.*\s).{8,}$')
+    Validators.pattern('^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[-+_!@#$%^&*.,?]).{8,}$')
   ]),
   Email: new FormControl('', [
     Validators.required,
@@ -39,11 +38,13 @@ export class LoginComponent implements OnInit{
     if (this.Loginform.status == 'VALID') {
       this.flag=false;
       console.log(this.Loginform.value);
-      // this.loginService.username = this.loginForm.value.username;
-      // this.loginService.password = this.loginForm.value.password;
-  
+      const data={
+        userName:this.Loginform.value.Email,
+        password:this.Loginform.value.password
+      }
+      this.authService.login(data)
       this.Loginform.reset()
-     
+
 }
 }
 }
