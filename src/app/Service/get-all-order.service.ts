@@ -18,6 +18,12 @@ export class GetAllOrderService {
       `https://localhost:7012/FilterStatus?Name_status=${status}`
     );
   }
+
+  getOrdersByStatusforTrader(status: string,id:string) {
+    return this.http.get<any[]>(
+      `https://localhost:7012/FilterStatusForTrader?Name_status=${status}&traderId=${id}`
+    );
+  }
   updateOrderStatus(id: string, status: string) {
     return this.http.put<any[]>(
       `https://localhost:7012/filter/${id}?newstatus=${status}`,

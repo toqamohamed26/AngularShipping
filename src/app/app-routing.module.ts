@@ -35,6 +35,7 @@ import { LoginGuard } from 'src/guards/login.guard';
 import { AuthGuard } from 'src/guards/auth.guard';
 import { EmployeeGuard } from 'src/guards/employee.guard';
 import { TraderGuard } from 'src/guards/trader.guard';
+import { ShoworderForTraderComponent } from './Components/showorder-for-trader/showorder-for-trader.component';
 
 const routes: Routes = [
   // Default route
@@ -45,6 +46,7 @@ const routes: Routes = [
   children:[
     {path:'trader',children:[
       {path: 'home', component: HomeForTraderComponent },
+      {path: 'ShowOrder', component: ShoworderForTraderComponent },
       { path: 'addorder', component: AddOrderComponent },
       { path: 'updateorder/:id', component: AddOrderComponent }
     ],canActivate:[TraderGuard]},

@@ -55,6 +55,7 @@ import { HomeComponent } from './Components/home/home.component';
 import { HomeForTraderComponent } from './Components/home-for-trader/home-for-trader.component';
 import { TokenInterceptor } from 'src/interceptors/token.interceptor';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { ShoworderForTraderComponent } from './Components/showorder-for-trader/showorder-for-trader.component';
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { DashboardComponent } from './Components/dashboard/dashboard.component';
     AlertComponent,
     HomeComponent,
     HomeForTraderComponent,
-    DashboardComponent
+    DashboardComponent,
+    ShoworderForTraderComponent
 
 
   ],
